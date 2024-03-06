@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Card = () => {
+const Card = ({card}) => {
   return (
-    <div>Card</div>
+    <div className={`card ${card.isFlipped ? "isFlipped" : ""}`}>
+        {card.value}
+    </div>
   )
 }
 
