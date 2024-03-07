@@ -36,10 +36,19 @@ Projeto Jogo da Memória desenvolvido utilizando React, JavaScript, HTML e CSS. 
 
 ## Imagens
 
+### Apresentando o Jogo:
+
 ![Apresentando o Jogo](public/memoria.png)
+
+### Jogo Rolando:
 
 ![Jogo Rolando](public/ingame.png)
 
+### Derrota:
+
 ![Derrota](public/lose.png)
+
+
+### Vitória:
 
 ![Vitória](public/win.png)
