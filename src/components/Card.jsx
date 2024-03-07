@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Card = ({card, onCLick}) => {
+const Card = ({ card, onCardClick }) => {
   return (
-    <div className={`card ${card.isFlipped === true ? "isFlipped" : ""}`} onClick={() => onCLick(card)}>
-        {card.isFlipped ? card.value : "?"}
+    <div className={`card ${card.isFlipped === true ? "isFlipped" : ""}`} onClick={() => onCardClick(card)}>
+      {card.isFlipped ? <img src={card.img}/> : "?"}
     </div>
   )
 }

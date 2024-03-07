@@ -28,37 +28,36 @@ h1 {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(4, 80px);
+  grid-template-columns: repeat(4, 100px);
   gap: 10px;
 }
 
 .card {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
   font-weight: bold;
-  background-color: #3498db;
+  background-color: #268000;
   color: #FFF;
+  font-size: 24px;
   cursor: pointer;
   border-radius: 5px;
 }
 
 .isFlipped {
   background-color: #FFF;
-  color: #3498DB;
 }
 
 .card:hover {
-  background-color: #2980B9;
+  background-color: #134E00;
   color: #FFF;
 }
 
 .btn {
   width: 350px;
-  background-color: #3498db;
+  background-color: #268000;
   color: #FFF;
   font-weight: bold;
   padding: 10px;
@@ -69,5 +68,5 @@ h1 {
 }
 
 .btn:hover {
-  background-color: #2980B9;
+  background-color: #134E00;
 }

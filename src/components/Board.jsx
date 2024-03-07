@@ -1,16 +1,15 @@
-import React from 'react'
-import Card from './Card'
+// No componente Board
+import React from 'react';
+import Card from './Card';
 
-const Board = ({cards, onCardClick}) => {
-
+const Board = ({ cards, onCardClick }) => {
   return (
     <div className='board'>
-        {cards.map((card) => (
-            <Card key={card.id} card={card} onCLick={onCardClick}/>  
-        ))}
-
+      {cards.map((card) => (
+        <Card key={card.id} card={card} onCardClick={onCardClick} />  
+      ))}
     </div>
-  )
+  );
 }
 
-export default Board
+export default Board;

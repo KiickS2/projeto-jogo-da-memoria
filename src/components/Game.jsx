@@ -13,14 +13,20 @@ const suffleArray = (array) => {
 
 const generateCards = () => {
 
-    const values = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    const cards = [
+        {value: "bear", img: 'src/assets/images/icons8-bear-96.png', isFlipped: false},
+        {value: "beaver", img: 'src/assets/images/icons8-beaver-96.png', isFlipped: false},
+        {value: "deer", img: 'src/assets/images/icons8-deer-96.png', isFlipped: false},
+        {value: "fox", img: 'src/assets/images/icons8-fox-96.png', isFlipped: false},
+        {value: "giraffe", img: 'src/assets/images/icons8-giraffe-96.png', isFlipped: false},
+        {value: "leopard", img: 'src/assets/images/icons8-leopard-96.png', isFlipped: false},
+        {value: "lion", img: 'src/assets/images/icons8-lion-96.png', isFlipped: false},
+        {value: "llama", img: 'src/assets/images/icons8-llama-96.png', isFlipped: false},
+    ];
 
-    const cards = values.map((value) => ({
-        value,
-        isFlipped: false
-    }))
-
-    const duplicatedCards = cards.concat(cards).map((card, index) => ({ ...card, id: index }));
+    const duplicatedCards = cards
+    .concat([...cards])
+    .map((card, index) => ({ ...card, id: index }));
 
     return suffleArray(duplicatedCards)
 }
@@ -40,20 +46,20 @@ const Game = () => {
         if (flippedCards.length === 2) return;
 
         const newCards = cards.map((card) => {
-            return card.id === clickedCard.id ? {...card, isFlipped: true} : card
+            return card.id === clickedCard.id ? {...card, isFlipped: true} : card;
         })
 
         setCards(newCards);
-        setFlippedCards([...flippedCards + clickedCard]);
+        setFlippedCards([...flippedCards, clickedCard]);
 
         if (flippedCards.length === 1){
             setTimeout(() => {
                 const [firstCard] = flippedCards;
 
-                if (firstCard !== clickedCard.value) {
+                if (firstCard.value !== clickedCard.value) {
                     const resetCards = cards.map((card) => {
-                        card.id === firstCard.id || card.id === clickedCard.id ? {...cards, isFlipped: false} : card;
-                    })
+                      return card.id === firstCard.id || card.id === clickedCard.id ? { ...card, isFlipped: false } : card;
+                    });
 
                     setCards(resetCards)
                     setChance((prev) => prev - 1)
@@ -64,13 +70,19 @@ const Game = () => {
         }
     }
 
+    const resetGame = () => {
+        setChance(6);
+        setFlippedCards([]);
+        setCards(generateCards());
+    }
+
     return (
         <div className='game'>
             <Board cards={cards} onCardClick={handleCardClick}/>
             {chance === 0 ?
                 (<p>Suas tentativas acabaram.</p>) : result === cards.length ?
                     (<h2>Parabéns, você ganhou!</h2>) : (<p>Você possui {chance} tentativas.</p>)}
-            <button className='btn'>Reiniciar</button>
+            <button className='btn' onClick={() => resetGame()}>Reiniciar</button>
         </div>
     )
 }
